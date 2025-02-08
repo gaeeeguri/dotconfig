@@ -19,6 +19,7 @@ return {
       {
         ";f",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.find_files({
             no_ignore = false,
@@ -30,6 +31,7 @@ return {
       {
         ";r",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.live_grep()
         end,
@@ -38,6 +40,7 @@ return {
       {
         "\\\\",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.buffers()
         end,
@@ -46,6 +49,7 @@ return {
       {
         ";;",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.resume()
         end,
@@ -54,6 +58,7 @@ return {
       {
         ";e",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.diagnostics()
         end,
@@ -62,6 +67,7 @@ return {
       {
         ";s",
         function()
+          ---@type table
           local builtin = require("telescope.builtin")
           builtin.treesitter()
         end,
@@ -93,8 +99,10 @@ return {
     config = function(_, opts)
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      ---@type table
       local fb_actions = require("telescope").extensions.file_browser.actions
 
+      ---@type table
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         wrap_results = true,
         layout_strategy = "horizontal",
@@ -123,7 +131,9 @@ return {
             -- your custom insert mode mappings
             ["n"] = {
               -- your custom normal mode mappings
+              ---@type table
               ["N"] = fb_actions.create,
+              ---@type table
               ["h"] = fb_actions.goto_parent_dir,
               ["<C-u>"] = function(prompt_bufnr)
                 for i = 1, 10 do
